@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="cataleg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="peliculas" />
+				<xs:element ref="series" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="peliculas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="codi" />
+				<xs:element ref="titulo" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="descripcion" />
+				<xs:element ref="pais" />
+				<xs:element ref="idioma" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="genero" />
+				<xs:element ref="repartiment" />
+				<xs:element ref="duracion" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="series">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="codi" />
+				<xs:element ref="titulo" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="descripcion" />
+				<xs:element ref="pais" />
+				<xs:element ref="idioma" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="genero" />
+				<xs:element ref="repartiment" />
+				<xs:element ref="temporadas" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="codi">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="numero" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="titulo" type="xs:string" />
+	<xs:element name="descripcion" type="xs:string" />
+	<xs:element name="pais" type="xs:string" />
+	<xs:element name="idioma" type="xs:string" />
+	<xs:element name="genero" type="xs:string" />
+	<xs:element name="repartiment">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="actor" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="actor">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sexo" />
+				<xs:element ref="nombre" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sexo" type="xs:string" />
+	<xs:element name="nombre" type="xs:string" />
+	<xs:element name="duracion">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="tiempo" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="temporadas">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="numerotemporada" />
+				<xs:element ref="numeroepisodios" />
+				<xs:element ref="episodios" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="numerotemporada">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="numero" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="numeroepisodios">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="numero" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="episodios">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tituloepisodio" />
+				<xs:element ref="duracionepisodio" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tituloepisodio" type="xs:string" />
+	<xs:element name="duracionepisodio">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="duracion" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
